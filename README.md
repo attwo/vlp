@@ -47,5 +47,5 @@ docker exec -i vlp-postgres psql -U vlp -v -d vlp < dump.sql
 ```
 2) Создать дамп:
 ```bash
-docker exec -i vlp-postgres pg_restore -U vlp -v -d vlp < dump.sql
+docker exec -i vlp-postgres pg_dump -U vlp -v -d vlp > dump.sql
 ``` 
