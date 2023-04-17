@@ -34,12 +34,10 @@ def generate_data_for_tests():
 
 
 def test_calc_model_success(api_client, generate_data_for_tests, sa_session):
-    with patch("src.routes.get_session") as mock_session:
-        mock_session.return_value = sa_session
-        response = api_client.post("vlp/calc",
-                                json=generate_data_for_tests)
-        assert response.status_code == 200
-        result = response.json()
-        assert result
-        assert result["p_wf"]
-        assert result["q_liq"]
+    response = api_client.post("vlp/calc",
+                            json=generate_data_for_tests)
+    assert response.status_code == 200
+    result = response.json()
+    assert result
+    assert result["p_wf"]
+    assert result["q_liq"]
